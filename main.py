@@ -7,6 +7,41 @@ running = True
 screen_width = 800
 screen_height = 600
 
+def welcome_screen():
+    screen.fill((0,0,255))
+    button_width = 100
+    button_height = 50
+    number_of_buttons = 3
+    distance_from_bottom = 50
+    button1_pos = (200-button_width/2,400)
+    button2_pos = (400-button_width/2, 400)
+    button3_pos = (600-button_width/2, 400)
+    pygame.draw.rect(screen, "Red", (button1_pos, (button_width, button_height))) # Replace with screen.blit("image", button1_pos)
+    pygame.draw.rect(screen, "Red", (button2_pos, (button_width, button_height)))
+    pygame.draw.rect(screen, "Red", (button3_pos, (button_width, button_height)))
+
+    start_game = False
+    while start_game == False:
+        mouse = pygame.mouse.get_pos()
+        pygame.event.get()
+        #If over button 1
+        if button1_pos[0] < mouse[0] < button1_pos[0] + button_width and button1_pos[1] < mouse[1] < button1_pos[1] + button_height:
+            print("Over Button 1!")
+            if pygame.mouse.get_pressed()[0]: #0 and 1 for x and y pos, 0 for left mouse click
+                start_game = True
+                return 1
+        if button2_pos[0] < mouse[0] < button2_pos[0] + button_width and button2_pos[1] < mouse[1] < button2_pos[1] + button_height:
+            print("Over Button 2!")
+            if pygame.mouse.get_pressed()[0]: #0 and 1 for x and y pos, 0 for left mouse click
+                start_game = True
+                return 2
+        if button3_pos[0] < mouse[0] < button3_pos[0] + button_width and button3_pos[1] < mouse[1] < button3_pos[1] + button_height:
+            print("Over Button 3!")
+            if pygame.mouse.get_pressed()[0]: #0 and 1 for x and y pos, 0 for left mouse click
+                start_game = True
+                return 3
+
+        pygame.display.update()
 
 def build_background():
     background_image = pygame.image.load("images/purple_background.jpg")
@@ -101,16 +136,20 @@ def draw_cake_layer(number_of_tiles, layer_number):
         screen.blit(cake_middle, (center_of_screen - (tile + 1) * tile_length, table_height - tile_length * layer_number))  # Middle tiles on the left of the screen
         screen.blit(cake_middle, (center_of_screen + (tile) * tile_length, table_height - tile_length * layer_number))  # Middle tiles on the right of the screen
 
-number = int(input("How many layers? Enter 1, 2, or 3. " ))  # Asks how many layers you want in the cake
+number = welcome_screen()
 
 topping = False  # I will remove this once I can draw toppings in the class
+
+topping_positions = []
 
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
+
     screen.blit(build_background(), (0, 0))
+
     # draw rectangle on screen
     pygame.draw.rect(screen, light_brown, (0, table_y, table_width, table_height))
     # draw shelves on screen
@@ -129,6 +168,10 @@ while running:
     cake_middle = pygame.image.load("images/cakeMid.png")
     tile_length = cake_middle.get_height()
     candy = pygame.image.load("images/candyBlue.png")
+    #load in other candy types here, then blit like below on other parts of shelf!
+
+    # Draw toppings on shelves
+    screen.blit(candy, (20, 230))
 
     if number >= 1:
         # Bottom Layer
@@ -142,16 +185,14 @@ while running:
 
     if pygame.key.get_pressed()[pygame.K_SPACE]:
         #toppings.add(Toppings(screen, "images/candyBlue.png", (200,200), 1))
-        topping = True
-        topping_position = pygame.mouse.get_pos()
-        topping_position = (topping_position[0] - candy.get_width()/2, topping_position[1] - candy.get_height()/2) #positions candy to center of mouse click
-        print("Adding a topping")
+        position = pygame.mouse.get_pos()
+        position = (position[0] - candy.get_width()/2, position[1] - candy.get_height()/2) #positions candy to center of mouse click
+        topping_positions.append(position)
 
-    if topping == True:
-        screen.blit(candy, topping_position)
+    for i in topping_positions:
+        print(topping_positions)
+        screen.blit(candy, i)
 
-    for topping in toppings:  # error RIGHT HERE wtf
-        topping.draw()
 
     pygame.display.update()
 
