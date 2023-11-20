@@ -8,7 +8,13 @@ screen_width = 800
 screen_height = 600
 
 def welcome_screen():
-    screen.fill((0,0,255))
+    screen.fill((200,162,200))
+    font = pygame.font.Font(None, 36)
+    text1 = font.render("Chose a number of Layers for your Cake!", True, (255,255,255),(200,162,200))
+    text2 = font.render("Welcome to the Bakery!", True, (255,255,255),(200,162,200))
+    button1text = font.render("1", True, (204, 0, 102),(170,255,195))
+    button2text = font.render("2", True, (204, 0, 102), (170, 255, 195))
+    button3text = font.render("3", True, (204, 0, 102),(170,255,195))
     button_width = 100
     button_height = 50
     number_of_buttons = 3
@@ -16,10 +22,14 @@ def welcome_screen():
     button1_pos = (200-button_width/2,400)
     button2_pos = (400-button_width/2, 400)
     button3_pos = (600-button_width/2, 400)
-    pygame.draw.rect(screen, "Red", (button1_pos, (button_width, button_height))) # Replace with screen.blit("image", button1_pos)
-    pygame.draw.rect(screen, "Red", (button2_pos, (button_width, button_height)))
-    pygame.draw.rect(screen, "Red", (button3_pos, (button_width, button_height)))
-
+    pygame.draw.rect(screen, (170, 255, 195), (button1_pos, (button_width, button_height))) # Replace with screen.blit("image", button1_pos)
+    pygame.draw.rect(screen, (170, 255, 195), (button2_pos, (button_width, button_height)))
+    pygame.draw.rect(screen, (170, 255, 195), (button3_pos, (button_width, button_height)))
+    screen.blit(text1, (screen_width//2 - text1.get_width() // 2, screen_height // 2 - text1.get_height()//2))
+    screen.blit(text2, (screen_width // 2 - text2.get_width() // 2, screen_height // 3 - text2.get_height() // 2))
+    screen.blit(button1text, (240-button_width/2,410))
+    screen.blit(button2text, (440 - button_width / 2, 410))
+    screen.blit(button3text, (640 - button_width / 2, 410))
     start_game = False
     while start_game == False:
         mouse = pygame.mouse.get_pos()
@@ -167,12 +177,23 @@ while running:
     cake_right = pygame.image.load("images/cakeRight.png")
     cake_middle = pygame.image.load("images/cakeMid.png")
     tile_length = cake_middle.get_height()
-    candy = pygame.image.load("images/candyBlue.png")
+    candy_blue = pygame.image.load("images/candyBlue.png")
+    candy_red = pygame.image.load("images/candyRed.png")
+    candy_yellow = pygame.image.load("images/candyYellow.png")
+    cherry = pygame.image.load("images/cherry.png")
+    pinkcream = pygame.image.load("images/creamPink.png")
+    vanillacream = pygame.image.load("images/creamVanilla.png")
+    heart = pygame.image.load("images/heart.png")
     #load in other candy types here, then blit like below on other parts of shelf!
 
     # Draw toppings on shelves
-    screen.blit(candy, (20, 230))
-
+    screen.blit(candy_blue, (20, 230))
+    screen.blit(candy_red, (20, 330))
+    screen.blit(candy_yellow, (120, 230))
+    screen.blit(cherry, (620, 230))
+    screen.blit(pinkcream, (720, 230))
+    screen.blit(vanillacream, (620, 330))
+    screen.blit(heart, (720, 330))
     if number >= 1:
         # Bottom Layer
         draw_cake_layer(6, 1)  # 6 = Number of tiles; 1 = 1st Layer
@@ -186,12 +207,12 @@ while running:
     if pygame.key.get_pressed()[pygame.K_SPACE]:
         #toppings.add(Toppings(screen, "images/candyBlue.png", (200,200), 1))
         position = pygame.mouse.get_pos()
-        position = (position[0] - candy.get_width()/2, position[1] - candy.get_height()/2) #positions candy to center of mouse click
+        position = (position[0] - candy_blue.get_width()/2, position[1] - candy_blue.get_height()/2) #positions candy to center of mouse click
         topping_positions.append(position)
 
     for i in topping_positions:
         print(topping_positions)
-        screen.blit(candy, i)
+        screen.blit(candy_blue, i)
 
 
     pygame.display.update()

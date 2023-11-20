@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1714b633-9a0b-49b1-a9c4-d17d34dac10a" name="Changes" comment="made game work">
+    <list default="true" id="1714b633-9a0b-49b1-a9c4-d17d34dac10a" name="Changes" comment="made game work better">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -129,14 +129,23 @@
       <option name="project" value="LOCAL" />
       <updated>1700192448682</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="made game work better">
+      <option name="closed" value="true" />
+      <created>1700429725948</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700429725948</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="background works" />
     <MESSAGE value="made game work" />
-    <option name="LAST_COMMIT_MESSAGE" value="made game work" />
+    <MESSAGE value="made game work better" />
+    <option name="LAST_COMMIT_MESSAGE" value="made game work better" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
