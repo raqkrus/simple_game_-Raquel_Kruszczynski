@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1714b633-9a0b-49b1-a9c4-d17d34dac10a" name="Changes" comment="made game work better">
+    <list default="true" id="1714b633-9a0b-49b1-a9c4-d17d34dac10a" name="Changes" comment="added toppings to screen, fixed welcome screen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -137,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700429725948</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added toppings to screen, fixed welcome screen">
+      <option name="closed" value="true" />
+      <created>1700455200964</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700455200964</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -145,7 +153,8 @@
     <MESSAGE value="background works" />
     <MESSAGE value="made game work" />
     <MESSAGE value="made game work better" />
-    <option name="LAST_COMMIT_MESSAGE" value="made game work better" />
+    <MESSAGE value="added toppings to screen, fixed welcome screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="added toppings to screen, fixed welcome screen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
