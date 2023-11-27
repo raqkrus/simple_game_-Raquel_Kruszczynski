@@ -127,6 +127,7 @@ class Toppings(pygame.sprite.Sprite):
         def draw(self):
             self.screen.blit(self.image, self.rect.topleft)
 
+
 def draw_cake_layer(number_of_tiles, layer_number):
     center_of_screen = screen_width / 2
     # Draw the left and right of the layer
@@ -203,27 +204,45 @@ while running:
         # Top Layer
         draw_cake_layer(2, 3)
 
-
     if event is not None and event.type == pygame.MOUSEBUTTONDOWN:
         # toppings.add(Toppings(screen, "images/candyBlue.png", (200,200), 1))
         position = pygame.mouse.get_pos()
-        position = (position[0] - candy_blue.get_width() / 2, position[1] - candy_blue.get_height() / 2) #where should this goooo?
+        position = [
+            position[0] - candy_blue.get_width() / 2,
+            position[1] - candy_blue.get_height() / 2]  # where should this goooo?
 
-        #if blue candy is selected, blue candy is current topping
+        # if blue candy is selected, blue candy is current topping
         if 0 <= position[0] <= candy_blue.get_width() and 230 <= position[1] <= 280:
             print("over blue")
             current_topping = candy_blue
 
-        #red candy selection
+        # red candy selection
         elif 0 <= position[0] <= candy_red.get_width() and 330 <= position[1] <= 380:
             print("over red")
             current_topping = candy_red
 
-        #yellow candy selection
+        # yellow candy selection
         elif 100 <= position[0] <= 170 and 220 <= position[1] <= 290:
             print("over yellow")
             current_topping = candy_yellow
 
+        # cherry selection
+        elif 610 <= position[0] <= 680 and 190 <= position[1] <= 290:
+            print("over cherry")
+            current_topping = cherry
+
+        # pink frosting selection
+        elif 700 <= position[0] <= 790 and 180 <= position[1] <= 300:
+            print("over pink frosting")
+            current_topping = pinkcream
+
+        elif 590 <= position[0] <= 680 and 330 <= position[1] <= 380:
+            print("over vanilla frosting")
+            current_topping = vanillacream
+
+        elif 700 <= position[0] <= 790 and 320 <position[1] <= 380:
+            print("over heart")
+            current_topping = heart
 
         elif current_topping is not None:
             topping_positions.append((position, current_topping))
