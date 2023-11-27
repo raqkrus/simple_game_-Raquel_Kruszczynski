@@ -72,6 +72,7 @@ pygame.display.set_caption("Pygame Background")
 # set color for table and shelves
 light_brown = (196, 164, 132)
 lighter_brown = (213, 193, 170)
+light_gray = (211, 211, 211)
 
 # set size of table
 table_width = screen_width
@@ -160,6 +161,9 @@ while running:
 
     screen.blit(build_background(), (0, 0))
 
+
+    #draw remove button
+    #pygame.draw.rect(screen, light_gray, (screen_width*2, table_y*2, 50, 50))
     # draw rectangle on screen
     pygame.draw.rect(screen, light_brown, (0, table_y, table_width, table_height))
     # draw shelves on screen
