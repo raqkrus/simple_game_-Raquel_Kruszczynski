@@ -209,19 +209,21 @@ while running:
         position = pygame.mouse.get_pos()
         position = (position[0] - candy_blue.get_width() / 2, position[1] - candy_blue.get_height() / 2) #where should this goooo?
 
-        #issues here
+        #if blue candy is selected, blue candy is current topping
         if 0 <= position[0] <= candy_blue.get_width() and 230 <= position[1] <= 280:
             print("over blue")
             current_topping = candy_blue
 
+        #red candy selection
         elif 0 <= position[0] <= candy_red.get_width() and 330 <= position[1] <= 380:
             print("over red")
             current_topping = candy_red
 
-#yellow wont work
-        elif 120 <= position[0] <= candy_yellow.get_width() and 230 <= position[1] <= 280:
+        #yellow candy selection
+        elif 100 <= position[0] <= 170 and 220 <= position[1] <= 290:
             print("over yellow")
             current_topping = candy_yellow
+
 
         elif current_topping is not None:
             topping_positions.append((position, current_topping))
