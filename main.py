@@ -5,9 +5,11 @@ from pygame import mixer
 pygame.init()
 running = True
 
+
 # set dimensions
 screen_width = 800
 screen_height = 600
+
 
 mixer.init()
 mixer.music.load('audio/music.wav')
@@ -18,12 +20,13 @@ click = pygame.mixer.Sound('audio/click1.wav')
 click2 = pygame.mixer.Sound('audio/click.ogv')
 def welcome_screen():
     screen.fill((200, 162, 200))
-    font = pygame.font.Font(None, 36)
-    text1 = font.render("Chose a number of Layers for your Cake!", True, (255, 255, 255), (200, 162, 200))
-    text2 = font.render("Welcome to the Bakery!", True, (255, 255, 255), (200, 162, 200))
-    button1text = font.render("1", True, (204, 0, 102), (170, 255, 195))
-    button2text = font.render("2", True, (204, 0, 102), (170, 255, 195))
-    button3text = font.render("3", True, (204, 0, 102), (170, 255, 195))
+    font1 = pygame.font.SysFont('helvetica', 35)
+    font2 = pygame.font.SysFont('helvetica', 30)
+    text1 = font1.render("Chose a number of Layers for your Cake!", True, (255, 255, 255), (200, 162, 200))
+    text2 = font1.render("Welcome to the Bakery!", True, (255, 255, 255), (200, 162, 200))
+    button1text = font2.render("1", True, (204, 0, 102), (170, 255, 195))
+    button2text = font2.render("2", True, (204, 0, 102), (170, 255, 195))
+    button3text = font2.render("3", True, (204, 0, 102), (170, 255, 195))
     button_width = 100
     button_height = 50
     number_of_buttons = 3
