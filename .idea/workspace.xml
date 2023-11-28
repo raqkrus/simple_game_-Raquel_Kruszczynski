@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1714b633-9a0b-49b1-a9c4-d17d34dac10a" name="Changes" comment="fixed broken yellow candy">
+    <list default="true" id="1714b633-9a0b-49b1-a9c4-d17d34dac10a" name="Changes" comment="trying to draw remove button for toppings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -153,7 +153,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701090845517</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="all toppings work">
+      <option name="closed" value="true" />
+      <created>1701092099610</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1701092099610</updated>
+    </task>
+    <task id="LOCAL-00010" summary="trying to draw remove button for toppings">
+      <option name="closed" value="true" />
+      <created>1701092535772</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1701092535772</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -163,7 +179,9 @@
     <MESSAGE value="made game work better" />
     <MESSAGE value="added toppings to screen, fixed welcome screen" />
     <MESSAGE value="fixed broken yellow candy" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed broken yellow candy" />
+    <MESSAGE value="all toppings work" />
+    <MESSAGE value="trying to draw remove button for toppings" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to draw remove button for toppings" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

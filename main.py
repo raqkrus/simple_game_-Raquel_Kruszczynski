@@ -1,4 +1,6 @@
 import pygame
+from pygame.locals import *
+from pygame import mixer
 
 pygame.init()
 running = True
@@ -7,7 +9,13 @@ running = True
 screen_width = 800
 screen_height = 600
 
+mixer.init()
+mixer.music.load('audio/music.wav')
+pygame.mixer.music.set_volume(0.1)
+mixer.music.play(-1)
 
+click = pygame.mixer.Sound('audio/click1.wav')
+click2 = pygame.mixer.Sound('audio/click.ogv')
 def welcome_screen():
     screen.fill((200, 162, 200))
     font = pygame.font.Font(None, 36)
@@ -42,18 +50,21 @@ def welcome_screen():
             print("Over Button 1!")
             if pygame.mouse.get_pressed()[0]:  # 0 and 1 for x and y pos, 0 for left mouse click
                 start_game = True
+                click.play()
                 return 1
         if button2_pos[0] < mouse[0] < button2_pos[0] + button_width and button2_pos[1] < mouse[1] < button2_pos[
             1] + button_height:
             print("Over Button 2!")
             if pygame.mouse.get_pressed()[0]:  # 0 and 1 for x and y pos, 0 for left mouse click
                 start_game = True
+                click.play()
                 return 2
         if button3_pos[0] < mouse[0] < button3_pos[0] + button_width and button3_pos[1] < mouse[1] < button3_pos[
             1] + button_height:
             print("Over Button 3!")
             if pygame.mouse.get_pressed()[0]:  # 0 and 1 for x and y pos, 0 for left mouse click
                 start_game = True
+                click.play()
                 return 3
 
         pygame.display.update()
@@ -219,40 +230,50 @@ while running:
         if 0 <= position[0] <= candy_blue.get_width() and 230 <= position[1] <= 280:
             print("over blue")
             current_topping = candy_blue
+            click.play()           #a way to simplify the clicks/loop?
 
         # red candy selection
         elif 0 <= position[0] <= candy_red.get_width() and 330 <= position[1] <= 380:
             print("over red")
             current_topping = candy_red
+            click.play()
+
 
         # yellow candy selection
         elif 100 <= position[0] <= 170 and 220 <= position[1] <= 290:
             print("over yellow")
             current_topping = candy_yellow
+            click.play()
 
         # cherry selection
         elif 610 <= position[0] <= 680 and 190 <= position[1] <= 290:
             print("over cherry")
             current_topping = cherry
+            click.play()
 
         # pink frosting selection
         elif 700 <= position[0] <= 790 and 180 <= position[1] <= 300:
             print("over pink frosting")
             current_topping = pinkcream
+            click.play()
 
         elif 590 <= position[0] <= 680 and 330 <= position[1] <= 380:
             print("over vanilla frosting")
             current_topping = vanillacream
+            click.play()
 
         elif 700 <= position[0] <= 790 and 320 <position[1] <= 380:
             print("over heart")
             current_topping = heart
+            click.play()
 
         elif current_topping is not None:
             topping_positions.append((position, current_topping))
+            click2.play(1) #its playing multiple times when you hold down
 
     for pos, candy_image in topping_positions:
         screen.blit(candy_image, pos)
+
 
     pygame.display.update()
 
