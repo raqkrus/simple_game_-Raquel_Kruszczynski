@@ -20,7 +20,7 @@ click = pygame.mixer.Sound('audio/click1.wav')
 click2 = pygame.mixer.Sound('audio/click.ogv')
 def welcome_screen():
     screen.fill((200, 162, 200))
-    font1 = pygame.font.SysFont('helvetica', 35)
+    font1 = pygame.font.SysFont('helvetica', 35)   #get better font, figure out ttf
     font2 = pygame.font.SysFont('helvetica', 30)
     text1 = font1.render("Chose a number of Layers for your Cake!", True, (255, 255, 255), (200, 162, 200))
     text2 = font1.render("Welcome to the Bakery!", True, (255, 255, 255), (200, 162, 200))
@@ -158,7 +158,6 @@ def draw_cake_layer(number_of_tiles, layer_number):
         screen.blit(cake_middle, (center_of_screen + (tile) * tile_length,
                                   table_height - tile_length * layer_number))  # Middle tiles on the right of the screen
 
-
 number = welcome_screen()
 
 topping = False  # I will remove this once I can draw toppings in the class
@@ -168,10 +167,14 @@ current_topping = None
 
 event = None
 
+sound_played = False
+pygame.mixer.set_num_channels(1)
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
 
     screen.blit(build_background(), (0, 0))
 
@@ -233,7 +236,7 @@ while running:
         if 0 <= position[0] <= candy_blue.get_width() and 230 <= position[1] <= 280:
             print("over blue")
             current_topping = candy_blue
-            click.play()           #a way to simplify the clicks/loop?
+            pygame.mixer.Channel(0).play(pygame.mixer.Sound(click))           #a way to simplify the clicks/loop?
 
         # red candy selection
         elif 0 <= position[0] <= candy_red.get_width() and 330 <= position[1] <= 380:
@@ -274,8 +277,24 @@ while running:
             topping_positions.append((position, current_topping))
             click2.play(1) #its playing multiple times when you hold down
 
-    for pos, candy_image in topping_positions:
-        screen.blit(candy_image, pos)
+    layer_1_size = ((190,610), (330,400))  #((width), (height))
+    layer_2_size = ((260,540), (260,330))
+    layer_3_size = ((330,470), (190,260))
+    candy_buffer = 40
+    width_buffer = 40
+
+    for pos, candy_image in topping_positions:   # layer_1_size [1st touple]{x pos] says if position of mouse is within width and height of each layer, then it will blit. Else, it wont blit to the screen.
+        if (layer_1_size[0][0] - width_buffer) < pos[0] < (layer_1_size[0][1] - width_buffer) and (layer_1_size[1][0] - candy_buffer) < pos[1] < (
+                layer_1_size[1][1] - candy_buffer):
+            screen.blit(candy_image, (pos[0], pos[1] - candy_image.get_height()/2))
+        if number > 1:  # If the cake has more than 1 layer
+            if (layer_2_size[0][0] - width_buffer) < pos[0] < (layer_2_size[0][1] - width_buffer) and (layer_2_size[1][0] - candy_buffer) < pos[1] < (
+                    layer_2_size[1][1] - candy_buffer):
+                screen.blit(candy_image, (pos[0], pos[1] - candy_image.get_height() / 2))
+        if number > 2:  # If the cake has more than 1 layer
+            if (layer_3_size[0][0] - width_buffer) < pos[0] < (layer_3_size[0][1] - width_buffer) and (layer_3_size[1][0] - candy_buffer) < pos[1] < (
+                    layer_3_size[1][1] - candy_buffer):
+                screen.blit(candy_image, (pos[0], pos[1] - candy_image.get_height() / 2))
 
 
     pygame.display.update()

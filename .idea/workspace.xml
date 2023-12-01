@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1714b633-9a0b-49b1-a9c4-d17d34dac10a" name="Changes" comment="trying to draw remove button for toppings">
+    <list default="true" id="1714b633-9a0b-49b1-a9c4-d17d34dac10a" name="Changes" comment="added sounds (partially working)">
+      <change afterPath="$PROJECT_DIR$/fonts/rapunled-font.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -169,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701092535772</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added sounds (partially working)">
+      <option name="closed" value="true" />
+      <created>1701180627447</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701180627447</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -181,7 +190,8 @@
     <MESSAGE value="fixed broken yellow candy" />
     <MESSAGE value="all toppings work" />
     <MESSAGE value="trying to draw remove button for toppings" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to draw remove button for toppings" />
+    <MESSAGE value="added sounds (partially working)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added sounds (partially working)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
