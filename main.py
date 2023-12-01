@@ -1,5 +1,4 @@
 import pygame
-from pygame.locals import *
 from pygame import mixer
 
 pygame.init()
@@ -277,9 +276,9 @@ while running:
             topping_positions.append((position, current_topping))
             click2.play(1) #its playing multiple times when you hold down
 
-    layer_1_size = ((190,610), (330,400))  #((width), (height))
-    layer_2_size = ((260,540), (260,330))
-    layer_3_size = ((330,470), (190,260))
+    layer_1_size = ((190,610), (330,420))  #((width), (height))
+    layer_2_size = ((260,540), (245,330))
+    layer_3_size = ((330,470), (160,260))
     candy_buffer = 40
     width_buffer = 40
 
