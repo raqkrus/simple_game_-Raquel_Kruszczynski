@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1714b633-9a0b-49b1-a9c4-d17d34dac10a" name="Changes" comment="added sounds (partially working)">
+    <list default="true" id="1714b633-9a0b-49b1-a9c4-d17d34dac10a" name="Changes" comment="only places toppings on the cake">
       <change afterPath="$PROJECT_DIR$/fonts/rapunled-font.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -13,6 +13,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -178,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701180627447</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="only places toppings on the cake">
+      <option name="closed" value="true" />
+      <created>1701398839180</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701398839180</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -191,7 +206,8 @@
     <MESSAGE value="all toppings work" />
     <MESSAGE value="trying to draw remove button for toppings" />
     <MESSAGE value="added sounds (partially working)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added sounds (partially working)" />
+    <MESSAGE value="only places toppings on the cake" />
+    <option name="LAST_COMMIT_MESSAGE" value="only places toppings on the cake" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -4,10 +4,22 @@ from pygame import mixer
 pygame.init()
 running = True
 
-
 # set dimensions
 screen_width = 800
 screen_height = 600
+
+placed_toppings = []
+
+
+font = pygame.font.SysFont('helvetica', 20)
+
+cakes_made = 0
+def undo_last_topping():
+    if len(placed_toppings) > 0:
+        removed_position, removed_toppings = placed_toppings.pop()
+        print("remove toppings:", removed_toppings)
+
+
 
 
 mixer.init()
@@ -17,9 +29,11 @@ mixer.music.play(-1)
 
 click = pygame.mixer.Sound('audio/click1.wav')
 click2 = pygame.mixer.Sound('audio/click.ogv')
+
+
 def welcome_screen():
     screen.fill((200, 162, 200))
-    font1 = pygame.font.SysFont('helvetica', 35)   #get better font, figure out ttf
+    font1 = pygame.font.SysFont('helvetica', 35)  # get better font, figure out ttf
     font2 = pygame.font.SysFont('helvetica', 30)
     text1 = font1.render("Chose a number of Layers for your Cake!", True, (255, 255, 255), (200, 162, 200))
     text2 = font1.render("Welcome to the Bakery!", True, (255, 255, 255), (200, 162, 200))
@@ -157,6 +171,7 @@ def draw_cake_layer(number_of_tiles, layer_number):
         screen.blit(cake_middle, (center_of_screen + (tile) * tile_length,
                                   table_height - tile_length * layer_number))  # Middle tiles on the right of the screen
 
+
 number = welcome_screen()
 
 topping = False  # I will remove this once I can draw toppings in the class
@@ -173,13 +188,16 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                cakes_made += 1  #increments cake counter
+                placed_toppings = []
+                print(f'resetting toppings. cakes made; {cakes_made}')
 
     screen.blit(build_background(), (0, 0))
 
-
-    #draw remove button
-    #pygame.draw.rect(screen, light_gray, (screen_width*2, table_y*2, 50, 50))
+    # draw remove button
+    # pygame.draw.rect(screen, light_gray, (screen_width*2, table_y*2, 50, 50))
     # draw rectangle on screen
     pygame.draw.rect(screen, light_brown, (0, table_y, table_width, table_height))
     # draw shelves on screen
@@ -229,13 +247,22 @@ while running:
         position = pygame.mouse.get_pos()
         position = [
             position[0] - candy_blue.get_width() / 2,
-            position[1] - candy_blue.get_height() / 2]  # where should this goooo?
+            position[1] - candy_blue.get_height() / 2]  # blits the topping at the center
+
+        undo_button_rect = pygame.Rect(125, 2 / 3 * screen_height - 50, 50, 30)
+        if undo_button_rect.collidepoint(pygame.mouse.get_pos()):
+            print("clicked undo button")
+            if len(placed_toppings) > 0:
+                print("before undo:", placed_toppings)
+                undo_last_topping()
+                print("After undo:", placed_toppings)
+
 
         # if blue candy is selected, blue candy is current topping
         if 0 <= position[0] <= candy_blue.get_width() and 230 <= position[1] <= 280:
             print("over blue")
             current_topping = candy_blue
-            pygame.mixer.Channel(0).play(pygame.mixer.Sound(click))           #a way to simplify the clicks/loop?
+            pygame.mixer.Channel(0).play(pygame.mixer.Sound(click))  # a way to simplify the clicks/loop?
 
         # red candy selection
         elif 0 <= position[0] <= candy_red.get_width() and 330 <= position[1] <= 380:
@@ -267,34 +294,44 @@ while running:
             current_topping = vanillacream
             click.play()
 
-        elif 700 <= position[0] <= 790 and 320 <position[1] <= 380:
+        elif 700 <= position[0] <= 790 and 320 < position[1] <= 380:
             print("over heart")
             current_topping = heart
             click.play()
 
-        elif current_topping is not None:
+        if current_topping is not None:
             topping_positions.append((position, current_topping))
-            click2.play(1) #its playing multiple times when you hold down
+            placed_toppings.append((position, current_topping))  # add to list
+            click2.play(1)  # its playing multiple times when you hold down
 
-    layer_1_size = ((190,610), (330,420))  #((width), (height))
-    layer_2_size = ((260,540), (245,330))
-    layer_3_size = ((330,470), (160,260))
+
+        # draw undo button
+    undo_button_rect = pygame.Rect(125, 2 / 3 * screen_height - 50, 50, 30)
+    pygame.draw.rect(screen, (230, 230, 255), undo_button_rect)
+    undo_text = font.render("Undo", True, (0, 0, 0))
+    screen.blit(undo_text, (125, 2 / 3 * screen_height - 50))
+
+    layer_1_size = ((190, 610), (330, 420))  # ((width), (height))
+    layer_2_size = ((260, 540), (245, 330))
+    layer_3_size = ((330, 470), (160, 260))
     candy_buffer = 40
     width_buffer = 40
 
-    for pos, candy_image in topping_positions:   # layer_1_size [1st touple]{x pos] says if position of mouse is within width and height of each layer, then it will blit. Else, it wont blit to the screen.
-        if (layer_1_size[0][0] - width_buffer) < pos[0] < (layer_1_size[0][1] - width_buffer) and (layer_1_size[1][0] - candy_buffer) < pos[1] < (
+    for pos, candy_image in topping_positions:  # layer_1_size [1st touple]{x pos] says if position of mouse is within width and height of each layer, then it will blit. Else, it wont blit to the screen.
+        if (layer_1_size[0][0] - width_buffer) < pos[0] < (layer_1_size[0][1] - width_buffer) and (
+                layer_1_size[1][0] - candy_buffer) < pos[1] < (
                 layer_1_size[1][1] - candy_buffer):
-            screen.blit(candy_image, (pos[0], pos[1] - candy_image.get_height()/2))
+            screen.blit(candy_image, (pos[0], pos[1] - candy_image.get_height() / 2))
         if number > 1:  # If the cake has more than 1 layer
-            if (layer_2_size[0][0] - width_buffer) < pos[0] < (layer_2_size[0][1] - width_buffer) and (layer_2_size[1][0] - candy_buffer) < pos[1] < (
+            if (layer_2_size[0][0] - width_buffer) < pos[0] < (layer_2_size[0][1] - width_buffer) and (
+                    layer_2_size[1][0] - candy_buffer) < pos[1] < (
                     layer_2_size[1][1] - candy_buffer):
                 screen.blit(candy_image, (pos[0], pos[1] - candy_image.get_height() / 2))
         if number > 2:  # If the cake has more than 1 layer
-            if (layer_3_size[0][0] - width_buffer) < pos[0] < (layer_3_size[0][1] - width_buffer) and (layer_3_size[1][0] - candy_buffer) < pos[1] < (
+            if (layer_3_size[0][0] - width_buffer) < pos[0] < (layer_3_size[0][1] - width_buffer) and (
+                    layer_3_size[1][0] - candy_buffer) < pos[1] < (
                     layer_3_size[1][1] - candy_buffer):
                 screen.blit(candy_image, (pos[0], pos[1] - candy_image.get_height() / 2))
-
 
     pygame.display.update()
 
