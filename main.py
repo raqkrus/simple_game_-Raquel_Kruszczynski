@@ -1,5 +1,7 @@
 import pygame
 from pygame import mixer
+import time
+
 
 pygame.init()
 running = True
@@ -96,6 +98,7 @@ def build_background():
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Pygame Background")
 
+
 # set color for table and shelves
 light_brown = (196, 164, 132)
 lighter_brown = (213, 193, 170)
@@ -134,6 +137,7 @@ h_divider_y = 300
 # set divider x positions
 left_h_divider_x = 0
 right_h_divider_x = screen_width - shelf_width
+
 
 # dictionary for toppings
 
@@ -174,6 +178,12 @@ def draw_cake_layer(number_of_tiles, layer_number):
 
 number = welcome_screen()
 
+font_message = pygame.font.SysFont('helvetica', 30)
+cake_message1 = font_message.render(f"Decorate your {number} layer cake by clicking desired topping", True, (255, 255, 255))
+cake_message2 = font_message.render( "and then the position on the cake in which you'd like it to appear!", True, (255, 255, 255))
+cake_message_rect1 = cake_message1.get_rect(center = (screen_width // 2, 100))
+cake_message_rect2 = cake_message2.get_rect(center = (screen_width // 2, 130))
+
 topping = False  # I will remove this once I can draw toppings in the class
 
 topping_positions = []
@@ -184,7 +194,17 @@ event = None
 sound_played = False
 pygame.mixer.set_num_channels(1)
 
+clock = pygame.time.Clock()
+
+show_cake_message = True
+
 while running:
+    if show_cake_message:
+        screen.blit(cake_message1, cake_message_rect1)
+        screen.blit(cake_message2, cake_message_rect2)
+    pygame.display.update()
+    clock.tick(60)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -192,7 +212,16 @@ while running:
             if event.key == pygame.K_SPACE:
                 cakes_made += 1  #increments cake counter
                 placed_toppings = []
+                topping_positions = []
                 print(f'resetting toppings. cakes made; {cakes_made}')
+                screen.fill((200, 162, 200))
+                font3 = pygame.font.SysFont('helvetica', 50)
+                text3 = font3.render("Baking A New cake!", True, (255, 255, 255), (200, 162, 200))
+                screen.blit(text3,(screen_width // 2 - text3.get_width() // 2, screen_height // 2 - text3.get_height() // 2))
+                pygame.display.update()
+                time.sleep(1)
+
+                show_cake_message = False
 
     screen.blit(build_background(), (0, 0))
 
@@ -303,6 +332,7 @@ while running:
             topping_positions.append((position, current_topping))
             placed_toppings.append((position, current_topping))  # add to list
             click2.play(1)  # its playing multiple times when you hold down
+            pygame.display.update()
 
 
         # draw undo button
