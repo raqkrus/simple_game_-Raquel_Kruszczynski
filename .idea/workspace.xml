@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1714b633-9a0b-49b1-a9c4-d17d34dac10a" name="Changes" comment="only places toppings on the cake">
-      <change afterPath="$PROJECT_DIR$/fonts/rapunled-font.zip" afterDir="false" />
+    <list default="true" id="1714b633-9a0b-49b1-a9c4-d17d34dac10a" name="Changes" comment="can reset the screen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -193,7 +192,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701398839180</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="trying to add a counter and reset">
+      <option name="closed" value="true" />
+      <created>1701624696652</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701624696652</updated>
+    </task>
+    <task id="LOCAL-00014" summary="can reset the screen">
+      <option name="closed" value="true" />
+      <created>1701634146773</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1701634146773</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -207,7 +222,9 @@
     <MESSAGE value="trying to draw remove button for toppings" />
     <MESSAGE value="added sounds (partially working)" />
     <MESSAGE value="only places toppings on the cake" />
-    <option name="LAST_COMMIT_MESSAGE" value="only places toppings on the cake" />
+    <MESSAGE value="trying to add a counter and reset" />
+    <MESSAGE value="can reset the screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="can reset the screen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

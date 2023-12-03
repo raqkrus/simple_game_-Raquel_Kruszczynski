@@ -31,6 +31,7 @@ mixer.music.play(-1)
 
 click = pygame.mixer.Sound('audio/click1.wav')
 click2 = pygame.mixer.Sound('audio/click.ogv')
+magic = pygame.mixer.Sound('audio/magic.wav')
 
 
 def welcome_screen():
@@ -218,6 +219,7 @@ while running:
                 font3 = pygame.font.SysFont('helvetica', 50)
                 text3 = font3.render("Baking A New cake!", True, (255, 255, 255), (200, 162, 200))
                 screen.blit(text3,(screen_width // 2 - text3.get_width() // 2, screen_height // 2 - text3.get_height() // 2))
+                magic.play()
                 pygame.display.update()
                 time.sleep(1)
 
