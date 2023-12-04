@@ -10,16 +10,18 @@ running = True
 screen_width = 800
 screen_height = 600
 
-placed_toppings = []
+topping_positions = []
 
 
 font = pygame.font.SysFont('helvetica', 20)
 
 cakes_made = 0
-def undo_last_topping():
-    if len(placed_toppings) > 0:
-        removed_position, removed_toppings = placed_toppings.pop()
-        print("remove toppings:", removed_toppings)
+def undo_last_topping(topping_positions):
+    if len(topping_positions) > 1:
+        print(topping_positions)
+        topping_positions.pop()
+        print(topping_positions)
+        return topping_positions
 
 
 
@@ -212,7 +214,6 @@ while running:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 cakes_made += 1  #increments cake counter
-                placed_toppings = []
                 topping_positions = []
                 print(f'resetting toppings. cakes made; {cakes_made}')
                 screen.fill((200, 162, 200))
@@ -281,13 +282,6 @@ while running:
             position[1] - candy_blue.get_height() / 2]  # blits the topping at the center
 
         undo_button_rect = pygame.Rect(125, 2 / 3 * screen_height - 50, 50, 30)
-        if undo_button_rect.collidepoint(pygame.mouse.get_pos()):
-            print("clicked undo button")
-            if len(placed_toppings) > 0:
-                print("before undo:", placed_toppings)
-                undo_last_topping()
-                print("After undo:", placed_toppings)
-
 
         # if blue candy is selected, blue candy is current topping
         if 0 <= position[0] <= candy_blue.get_width() and 230 <= position[1] <= 280:
@@ -330,11 +324,23 @@ while running:
             current_topping = heart
             click.play()
 
-        if current_topping is not None:
+        if undo_button_rect.collidepoint(pygame.mouse.get_pos()):
+            print("clicked undo button")
+            if len(topping_positions) > 0:
+                #print("before undo:", topping_positions)
+                topping_positions = undo_last_topping(topping_positions)
+                time.sleep(0.5)
+                #print("After undo:", topping_positions)
+
+        elif current_topping is not None:
+            print(topping_positions)
             topping_positions.append((position, current_topping))
-            placed_toppings.append((position, current_topping))  # add to list
+            print(topping_positions)
             click2.play(1)  # its playing multiple times when you hold down
-            pygame.display.update()
+            time.sleep(0.25)
+        pygame.display.update()
+        if not topping_positions:
+            topping_positions = []
 
 
         # draw undo button
@@ -364,6 +370,10 @@ while running:
                     layer_3_size[1][0] - candy_buffer) < pos[1] < (
                     layer_3_size[1][1] - candy_buffer):
                 screen.blit(candy_image, (pos[0], pos[1] - candy_image.get_height() / 2))
+
+    cake_font = pygame.font.SysFont('helvetica', 30)
+    cake_text = cake_font.render(f"Cakes Baked: {cakes_made}", True, (255, 255, 255), (200, 162, 200))
+    screen.blit(cake_text, (screen_width // 2 - cake_text.get_width() // 2, cake_text.get_height()))
 
     pygame.display.update()
 
